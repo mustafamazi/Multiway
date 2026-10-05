@@ -8,7 +8,7 @@ This repository contains two things:
 | Folder | What it is |
 | --- | --- |
 | [`prototype/`](prototype/) | An offline Python reference implementation, used to verify the algorithm (STFT, per-bin delay, overlap-add). |
-| [`plugin/`](plugin/) | The real-time audio plugin, written in C++ with JUCE (AU, VST3, Standalone on macOS). Current version: **v1.1**. |
+| [`plugin/`](plugin/) | The real-time audio plugin, written in C++ with JUCE (AU, VST3 and Standalone on macOS; VST3 and Standalone on Windows). Current version: **v1.1**. |
 
 ---
 
@@ -87,6 +87,25 @@ repository builds on its own:
 
    The AU and VST3 builds are copied to `~/Library/Audio/Plug-Ins/`. The
    Standalone app is placed in `plugin/Builds/MacOSX/build/<config>/`.
+
+[`scripts/package_mac.sh`](scripts/package_mac.sh) builds the signed and
+notarized macOS installer (`.pkg`).
+
+#### Windows
+
+Windows builds use [`plugin/CMakeLists.txt`](plugin/CMakeLists.txt), which
+fetches JUCE by itself and mirrors the settings of `Multiway.jucer`
+(including the version). Requires Visual Studio 2022 and CMake 3.22+:
+
+```bash
+cmake -S plugin -B build -A x64
+cmake --build build --config Release
+```
+
+The **Windows Installer** GitHub Actions workflow builds the VST3 and
+Standalone app and packages them with Inno Setup
+([`installer/Multiway.iss`](installer/Multiway.iss)) into
+`Multiway-v<version>-Windows-Setup.exe`.
 
 ---
 

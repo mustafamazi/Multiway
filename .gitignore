@@ -31,3 +31,6 @@ __pycache__/
 
 # Editor settings
 .vscode/
+
+# Inno Setup output
+installer/Output/
