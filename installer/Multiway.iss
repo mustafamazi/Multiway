@@ -49,6 +49,8 @@ DisableDirPage=yes
 DefaultGroupName=BopsAudio
 DisableProgramGroupPage=yes
 
+LicenseFile=..\LICENSE
+
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 PrivilegesRequired=admin
@@ -73,6 +75,8 @@ Name: "standalone"; Description: "Standalone app"; Types: full
 [Files]
 Source: "{#Vst3Bundle}\*"; DestDir: "{commoncf64}\VST3\Multiway.vst3"; Components: vst3; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#StandaloneExe}"; DestDir: "{app}"; Components: standalone; Flags: ignoreversion
+; AGPLv3 text, installed next to the uninstaller whichever components are chosen.
+Source: "..\LICENSE"; DestDir: "{app}"; DestName: "LICENSE.txt"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Multiway"; Filename: "{app}\Multiway.exe"; Components: standalone

@@ -193,3 +193,7 @@ The JUCE plugin addresses the first three of these.
 ## Author
 
 Mustafa Mazı — Department of Physics, Yeditepe University
+
+## License
+
+AGPLv3
